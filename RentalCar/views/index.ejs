@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Typify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Typify by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="stylesheets/main.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src = 'javascripts/listener.js'></script>
+		<script src="javascripts/skel.min.js"></script>
+		<script src="javascripts/util.js"></script>
+		<script src="javascripts/main.js"></script>
+	</head>
+	<body>
+		<%
+			if(loginState) {
+		%>
+				<button id = 'logoutBtn'>LOG OUT</button>
+				<span id = 'loginToolbar'><%= id %>님 환영합니다. </span>
+		<%
+			} else {
+		%>
+		
+		<%
+			}
+		%>
+        <section id = "menu" class = 'wrapper special'>
+			<div>
+				<a href = '/'><button>홈으로</button></a>
+				<a href = '/signup'><button>회원 가입</button></a>
+				<a href = '/login'><button>로그인</button></a>
+				<a href = '/reservation'><button>예약</button></a>
+				<a href = '/exchange'><button>원화 환전</button></a>
+			</div>
+		</section>
+
+
+		<!-- One 
+			예약 하는 부분만 넣자
+		
+		-->
+
+		<div id = 'registerDiv'>
+			<h3>렌터카 영업소 선택</h3>
+			픽업<br />
+			<input id = 'searchPickup' placeholder = '도시, 공항, 주소, 역, 우편번호....'>
+			<!-- react로 검색하는 부분 input tag로 넣기 -->
+			<div id = 'startReg'>
+				<span>픽업 날짜</span> <br />
+				<input value = '시작일' type = 'button' id = 'startDay'><br />
+				<select id = 'startTime'>
+					<option value = ''>시간을 정해주세요. </option>
+					<option value = '00:00'>00:00</option>
+					<option value = '00:30'>00:30</option>
+					<option value = '01:00'>01:00</option>
+					<option value = '01:30'>01:30</option>
+					<option value = '02:00'>02:00</option>
+					<option value = '02:30'>02:30</option>
+					<option value = '03:00'>03:00</option>
+					<option value = '03:30'>03:30</option>
+					<option value = '04:00'>04:00</option>
+					<option value = '04:30'>04:30</option>
+					<option value = '05:00'>05:00</option>
+					<option value = '05:30'>05:30</option>
+					<option value = '06:00'>06:00</option>
+					<option value = '06:30'>06:30</option>
+					<option value = '07:00'>07:00</option>
+					<option value = '07:30'>07:30</option>
+					<option value = '08:00'>08:00</option>
+					<option value = '08:30'>08:30</option>
+					<option value = '09:00'>09:00</option>
+					<option value = '09:30'>09:30</option>
+					<option value = '10:00'>10:00</option>
+					<option value = '10:30'>10:30</option>
+					<option value = '11:00'>11:00</option>
+					<option value = '11:30'>11:30</option>
+					<option value = '12:00'>12:00</option>
+					<option value = '12:30'>12:30</option>
+					<option value = '13:00'>13:00</option>
+					<option value = '13:00'>13:30</option>
+					<option value = '14:00'>14:00</option>
+					<option value = '14:30'>14:30</option>
+					<option value = '15:00'>15:00</option>
+					<option value = '15:30'>15:30</option>
+					<option value = '16:00'>16:00</option>
+					<option value = '16:30'>16:30</option>
+					<option value = '17:00'>17:00</option>
+					<option value = '17:30'>17:30</option>
+					<option value = '18:00'>18:00</option>
+					<option value = '18:30'>18:30</option>
+					<option value = '19:00'>19:00</option>
+					<option value = '19:30'>19:30</option>
+					<option value = '20:00'>20:00</option>
+					<option value = '20:30'>20:30</option>
+					<option value = '21:00'>21:00</option>
+					<option value = '21:30'>21:30</option>
+					<option value = '22:00'>22:00</option>
+					<option value = '22:30'>22:30</option>
+					<option value = '23:00'>23:00</option>
+					<option value = '23:30'>23:30</option>
+				</select>
+			</div>
+			<div id = 'endReg'>
+				<span>반납 날짜</span> <br />
+				<input value = '반납일' type = 'button' id = 'endDay'><br />
+				<select id = 'endTime'>
+					<option value = ''>시간을 정해주세요. </option>
+					<option value = '00:00'>00:00</option>
+					<option value = '00:30'>00:30</option>
+					<option value = '01:00'>01:00</option>
+					<option value = '01:30'>01:30</option>
+					<option value = '02:00'>02:00</option>
+					<option value = '02:30'>02:30</option>
+					<option value = '03:00'>03:00</option>
+					<option value = '03:30'>03:30</option>
+					<option value = '04:00'>04:00</option>
+					<option value = '04:30'>04:30</option>
+					<option value = '05:00'>05:00</option>
+					<option value = '05:30'>05:30</option>
+					<option value = '06:00'>06:00</option>
+					<option value = '06:30'>06:30</option>
+					<option value = '07:00'>07:00</option>					<option value = '07:30'>07:30</option>
+					<option value = '08:00'>08:00</option>
+					<option value = '08:30'>08:30</option>
+					<option value = '09:00'>09:00</option>
+					<option value = '09:30'>09:30</option>
+					<option value = '10:00'>10:00</option>
+					<option value = '10:30'>10:30</option>
+					<option value = '11:00'>11:00</option>
+					<option value = '11:30'>11:30</option>
+					<option value = '12:00'>12:00</option>
+					<option value = '12:30'>12:30</option>
+					<option value = '13:00'>13:00</option>
+					<option value = '13:00'>13:30</option>
+					<option value = '14:00'>14:00</option>
+					<option value = '14:30'>14:30</option>
+					<option value = '15:00'>15:00</option>
+					<option value = '15:30'>15:30</option>
+					<option value = '16:00'>16:00</option>
+					<option value = '16:30'>16:30</option>
+					<option value = '17:00'>17:00</option>
+					<option value = '17:30'>17:30</option>
+					<option value = '18:00'>18:00</option>
+					<option value = '18:30'>18:30</option>
+					<option value = '19:00'>19:00</option>
+					<option value = '19:30'>19:30</option>
+					<option value = '20:00'>20:00</option>					<option value = '20:30'>20:30</option>
+					<option value = '21:00'>21:00</option>
+					<option value = '21:30'>21:30</option>
+					<option value = '22:00'>22:00</option>
+					<option value = '22:30'>22:30</option>
+					<option value = '23:00'>23:00</option>					<option value = '23:30'>23:30</option>
+				</select>
+			</div>
+		</div>
+
+		<div id = 'driverAgeDiv'>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id = "footer">
+			<div class = "copyright">
+			&copy; Untitled. Design: <a href = "http://templated.co/">TEMPLATED</a>.
+			</div>
+		</footer>
+	</body>
+</html>
