@@ -9,7 +9,8 @@ router.get('/', (req, res, next) => {
     if(req.session.userid) {
       id = req.session.userid;
     }
-  
+    console.log(req.session.loginState);
+    console.log(req.session.userid);
     res.render('signup', {
         loginState : req.session.loginState,
         id

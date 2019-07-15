@@ -8,6 +8,8 @@ router.get('/', function(req, res, next) {
   if(req.session.userid) {
     id = req.session.userid;
   }
+  console.log(req.session.loginState);
+  console.log(req.session.userid);
   res.render('index', {
     loginState: req.session.loginState,
     id

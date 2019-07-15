@@ -8,7 +8,9 @@ router.get('/', (req, res, next) => {
     if(req.session.userid) {
       id = req.session.userid;
     }
-  
+    console.log(req.sessionID);
+    console.log('login', req.session.loginState);
+    console.log(req.session.userid);
     res.render('login', {
         loginState : req.session.loginState,
         id
@@ -44,9 +46,9 @@ router.post('/', (req, res, next) => {
                 if(rs[0] && rs[0].name) {
                     console.log('rs[0] : ', rs[0]);
                     console.log('rs[0].name : ',rs[0].name);
+                    req.session.loginState = true;
                     req.session.userid = req.body.userid;
                     req.session.name = rs[0].name;
-                    req.session.loginState = true;
                     res.redirect('/');
                 } else {
                     result.txt = '다시 로그인해주세요. ';

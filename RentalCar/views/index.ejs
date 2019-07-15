@@ -23,10 +23,6 @@
 				<button id = 'logoutBtn'>LOG OUT</button>
 				<span id = 'loginToolbar'><%= id %>님 환영합니다. </span>
 		<%
-			} else {
-		%>
-		
-		<%
 			}
 		%>
         <section id = "menu" class = 'wrapper special'>
@@ -34,8 +30,8 @@
 				<a href = '/'><button>홈으로</button></a>
 				<a href = '/signup'><button>회원 가입</button></a>
 				<a href = '/login'><button>로그인</button></a>
-				<a href = '/reservation'><button>예약</button></a>
-				<a href = '/exchange'><button>원화 환전</button></a>
+				<!-- <a href = '/reservation'><button>예약</button></a>
+				<a href = '/exchange'><button>원화 환전</button></a> -->
 			</div>
 		</section>
 
@@ -52,9 +48,9 @@
 			<!-- react로 검색하는 부분 input tag로 넣기 -->
 			<div id = 'startReg'>
 				<span>픽업 날짜</span> <br />
-				<input value = '시작일' type = 'button' id = 'startDay'><br />
+				<input value = '시작일' type = 'date' id = 'startDay' class = 'calendar'><br />
 				<select id = 'startTime'>
-					<option value = ''>시간을 정해주세요. </option>
+					<option value = '' selected = 'selected'>시간을 정해주세요. </option>
 					<option value = '00:00'>00:00</option>
 					<option value = '00:30'>00:30</option>
 					<option value = '01:00'>01:00</option>
@@ -107,9 +103,9 @@
 			</div>
 			<div id = 'endReg'>
 				<span>반납 날짜</span> <br />
-				<input value = '반납일' type = 'button' id = 'endDay'><br />
+				<input value = '반납일' type = 'date' id = 'endDay' class = 'calendar'><br />
 				<select id = 'endTime'>
-					<option value = ''>시간을 정해주세요. </option>
+					<option value = '' selected = 'selected'>시간을 정해주세요. </option>
 					<option value = '00:00'>00:00</option>
 					<option value = '00:30'>00:30</option>
 					<option value = '01:00'>01:00</option>
@@ -124,7 +120,8 @@
 					<option value = '05:30'>05:30</option>
 					<option value = '06:00'>06:00</option>
 					<option value = '06:30'>06:30</option>
-					<option value = '07:00'>07:00</option>					<option value = '07:30'>07:30</option>
+					<option value = '07:00'>07:00</option>					
+					<option value = '07:30'>07:30</option>
 					<option value = '08:00'>08:00</option>
 					<option value = '08:30'>08:30</option>
 					<option value = '09:00'>09:00</option>
@@ -149,12 +146,14 @@
 					<option value = '18:30'>18:30</option>
 					<option value = '19:00'>19:00</option>
 					<option value = '19:30'>19:30</option>
-					<option value = '20:00'>20:00</option>					<option value = '20:30'>20:30</option>
+					<option value = '20:00'>20:00</option>					
+					<option value = '20:30'>20:30</option>
 					<option value = '21:00'>21:00</option>
 					<option value = '21:30'>21:30</option>
 					<option value = '22:00'>22:00</option>
 					<option value = '22:30'>22:30</option>
-					<option value = '23:00'>23:00</option>					<option value = '23:30'>23:30</option>
+					<option value = '23:00'>23:00</option>					
+					<option value = '23:30'>23:30</option>
 				</select>
 			</div>
 		</div>

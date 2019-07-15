@@ -29,9 +29,9 @@ app.use(session({
 }));
 
 app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
 app.use('/signup', require('./routes/signup'));
 app.use('/login', require('./routes/login'));
+// app.use('/logout', require('./routes/logout'));
 // app.use('/reservation', require('./routes/reservation'));
 // app.use('/exchange', require('./routes/exchange'));
 

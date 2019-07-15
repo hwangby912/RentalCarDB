@@ -59,7 +59,10 @@ $(document).ready(() => {
         }
     });
     
-    $('#logoutBtn').click(() => {
-        alert('aaa');
+
+    $('#logOutBtn').click(() => {
+        $.get('/logout', (data, status) => {
+            location.reload(true);
+        });
     });
 });
