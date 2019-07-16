@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mysql = require('mysql');
 
 router.get('/', (req, res, next) => {
     
@@ -7,7 +8,7 @@ router.get('/', (req, res, next) => {
     if(req.session.userid) {
         id = req.session.userid;
     }
-    res.render('exchange', {
+    res.render('reservation', {
         loginState : req.session.loginState,
         id
         // loginID : req.session.userid,
@@ -16,6 +17,27 @@ router.get('/', (req, res, next) => {
         // loginPhone : req.session.phone,
         // loginEmail : req.session.email,
     })
+});
+
+router.post('/', (req, res, next) => {
+    // const result = {
+    //     txt : ''
+    // }
+
+    // const con = mysql.createConnection({
+    //     host : 'localhost',
+    //     user : 'root',
+    //     password : 'root',
+    //     database : 'rentalcar'
+    // });
+
+    // con.connect((err) => {
+    //     if(err) {
+    //         return console.error(err.message);
+    //     }
+
+
+    // });
 });
 
 module.exports = router;

@@ -3862,6 +3862,9 @@
 		width : 300px;
 	}
 
+	#registerBtnDiv {
+		text-align: center;
+	}
 	/* #logoutBtn {
 		float: right;
 	} */

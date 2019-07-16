@@ -4,16 +4,18 @@ var mysql = require('mysql');
 
 router.get('/', (req, res, next) => {
 
-    let id;
-    if(req.session.userid) {
-      id = req.session.userid;
-    }
-    console.log(req.sessionID);
-    console.log('login', req.session.loginState);
-    console.log(req.session.userid);
+    // let id;
+    // if(req.session.userid) {
+    //   id = req.session.userid;
+    // }
     res.render('login', {
         loginState : req.session.loginState,
-        id
+        // id
+        loginID: req.session.userid,
+        loginPW: req.session.userpw,
+        loginName : req.session.name,
+        loginEmail : req.session.email,
+        loginPhone : req.session.phone,
     });
 });
 

@@ -2,32 +2,31 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
-
 router.get('/', (req, res, next) => {
 
-    let id;
-    if(req.session.userid) {
-      id = req.session.userid;
-    }
+    // let id;
+    // if(req.session.userid) {
+    //   id = req.session.userid;
+    // }
     console.log(req.session.loginState);
     console.log(req.session.userid);
     res.render('signup', {
+        // id
         loginState : req.session.loginState,
-        id
-        // loginID : req.session.userid,
-        // loginPW : req.session.userpw,
-        // loginName : req.session.name,
-        // loginPhone : req.session.phone,
-        // loginEmail : req.session.email,
+        loginID : req.session.userid,
+        loginPW : req.session.userpw,
+        loginName : req.session.name,
+        loginPhone : req.session.phone,
+        loginEmail : req.session.email,
     })
 });
 
 router.post('/', (req, res, next) => {
-    // req.session.userid = req.body.userid;
-    // req.session.userpw = req.body.userpw;
-    // req.session.name = req.body.name;
-    // req.session.phone = req.body.phone;
-    // req.session.email = req.body.email;
+    req.session.userid = req.body.userid;
+    req.session.userpw = req.body.userpw;
+    req.session.name = req.body.name;
+    req.session.phone = req.body.phone;
+    req.session.email = req.body.email;
 
     const result = {
         txt : '회원 가입 오류'

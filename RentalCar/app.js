@@ -4,8 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-var mysql = require('mysql');
-
 var app = express();
 
 // view engine setup
@@ -31,8 +29,10 @@ app.use(session({
 app.use('/', require('./routes/index'));
 app.use('/signup', require('./routes/signup'));
 app.use('/login', require('./routes/login'));
-// app.use('/logout', require('./routes/logout'));
-// app.use('/reservation', require('./routes/reservation'));
+app.use('/logout', require('./routes/logout'));
+app.use('/reservation', require('./routes/reservation'));
+app.use('/car_name', require('./routes/car_name'));
+app.use('/car_location', require('./routes/car_location'));
 // app.use('/exchange', require('./routes/exchange'));
 
 // catch 404 and forward to error handler

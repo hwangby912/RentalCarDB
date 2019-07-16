@@ -17,7 +17,7 @@
 			if(loginState) {
 		%>
 			<button id = 'logoutBtn'>LOG OUT</button>
-			<span id = 'loginToolbar'><%= id %>님 환영합니다. </span>
+			<span id = 'loginToolbar'><%= loginID %>님 환영합니다. </span>
 		<%
 			} else {
 		%>
@@ -30,8 +30,8 @@
                 <a href = '/'><button>홈으로</button></a>
                 <a href = '/signup'><button>회원 가입</button></a>
                 <a href = '/login'><button>로그인</button></a>
-                <!-- <a href = '/reservation'><button>예약</button></a>
-                <a href = '/exchange'><button>원화 환전</button></a> -->
+                <a href = '/reservation'><button>예약</button></a>
+                <!-- <a href = '/exchange'><button>원화 환전</button></a> -->
             </div>
         </section>
 

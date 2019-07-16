@@ -4,20 +4,20 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  let id;
-  if(req.session.userid) {
-    id = req.session.userid;
-  }
+  // let id;
+  // if(req.session.userid) {
+  //   id = req.session.userid;
+  // }
   console.log(req.session.loginState);
   console.log(req.session.userid);
   res.render('index', {
+    // id
     loginState: req.session.loginState,
-    id
-    // loginID: req.session.userid,
-    // loginPW: req.session.userpw,
-    // loginName : req.session.name,
-    // loginEmail : req.session.email,
-    // loginPhone : req.session.phone,
+    loginID: req.session.userid,
+    loginPW: req.session.userpw,
+    loginName : req.session.name,
+    loginPhone : req.session.phone,
+    loginEmail : req.session.email,
   });
 });
 

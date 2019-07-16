@@ -58,11 +58,68 @@ $(document).ready(() => {
             });
         }
     });
-    
 
-    $('#logOutBtn').click(() => {
-        $.get('/logout', (data, status) => {
+    $('#logoutBtn').click(() => {
+        $.get('/logout', '', (data, status) => {
             location.reload(true);
         });
     });
+
+    $('#carLocation').click(() => {
+        
+        $.post('/car_location', '', (data, status) => {
+            const parsedData = JSON.parse(data);
+            let printOption;
+
+            parsedData.txt.forEach((element) => {
+                // printOption += `'${element.location}'`;
+                printOption += `<option value = '${element.location}'>${element.location}</option>`;
+                console.log(printOption);
+            });
+            console.log(parsedData.txt);
+            // alert(parsedData.txt);
+        });
+    });
+
+    $('#carName').click(() => {
+        // const carLocation = $('#carLocation').val();
+        
+        // const sendParams = {
+        //     carLocation
+        // };
+        
+        // $.post('/car_name', sendParams, (data, status) => {
+        //     const parsedData = JSON.parse(data);
+        //     alert(parsedData.txt);
+        // });
+    });
+
+    // $('#registerBtn').click(() => {
+    //     const location = $('#location').val();
+    //     const carName = $('#carName').val();
+    //     const startDay = $('#startDay').val();
+    //     const startTime = $('#startTime').val();
+    //     const endDay = $('#endDay').val();
+    //     const endTime = $('#endTime').val();
+
+    //     const sendParams = {
+    //         location,
+    //         carName,
+    //         startDay,
+    //         startTime,
+    //         endDay,
+    //         endTime
+    //     }
+
+    //     $.post('/reservation', sendParams, (data, status) => {
+    //         const parsedData = JSON.parse(data);
+    //         alert('예약이 완료되었습니다. ');
+    //         $('#location').val('')
+    //         $('#carName').val('')
+    //         $('#startDay').val('')
+    //         $('#startTime').val('')
+    //         $('#endDay').val('')
+    //         $('#endTime').val('')
+    //     });
+    // });
 });
