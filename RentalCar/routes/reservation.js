@@ -20,24 +20,30 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    // const result = {
-    //     txt : ''
-    // }
+    const result = {
+        txt : ''
+    }
 
-    // const con = mysql.createConnection({
-    //     host : 'localhost',
-    //     user : 'root',
-    //     password : 'root',
-    //     database : 'rentalcar'
-    // });
+    console.log(req.body);
+    console.log('userid', req.session.userid);
+    const con = mysql.createConnection({
+        host : 'localhost',
+        user : 'root',
+        password : 'root',
+        database : 'rentalcar'
+    });
+    
+    con.connect((err) => {
+        if(err) {
+            return console.error(err.message);
+        }
+        
+    });
 
-    // con.connect((err) => {
-    //     if(err) {
-    //         return console.error(err.message);
-    //     }
+    res.json({});
 
 
-    // });
+
 });
 
 module.exports = router;

@@ -10,12 +10,12 @@ router.get('/', (req, res, next) => {
     // }
     res.render('login', {
         loginState : req.session.loginState,
-        // id
         loginID: req.session.userid,
-        loginPW: req.session.userpw,
-        loginName : req.session.name,
-        loginEmail : req.session.email,
-        loginPhone : req.session.phone,
+        // loginPW: req.session.userpw,
+        // loginName : req.session.name,
+        // loginEmail : req.session.email,
+        // loginPhone : req.session.phone,
+        // id,
     });
 });
 

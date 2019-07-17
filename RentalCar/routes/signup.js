@@ -11,13 +11,13 @@ router.get('/', (req, res, next) => {
     console.log(req.session.loginState);
     console.log(req.session.userid);
     res.render('signup', {
-        // id
         loginState : req.session.loginState,
         loginID : req.session.userid,
-        loginPW : req.session.userpw,
-        loginName : req.session.name,
-        loginPhone : req.session.phone,
-        loginEmail : req.session.email,
+        // loginPW : req.session.userpw,
+        // loginName : req.session.name,
+        // loginPhone : req.session.phone,
+        // loginEmail : req.session.email,
+        // id,
     })
 });
 

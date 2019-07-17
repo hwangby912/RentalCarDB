@@ -17,7 +17,7 @@
 			if(loginState) {
 		%>
 			<button id = 'logoutBtn'>LOG OUT</button>
-			<span id = 'loginToolbar'><%= loginID %>님 환영합니다. </span>
+			<span id = 'loginToolbar'><%= id %>님 환영합니다. </span>
 		<%
 			} else {
 		%>
@@ -38,7 +38,10 @@
         <div id = 'registerDiv'>
 			<h3>렌터카 영업소 선택</h3>
 			픽업<br />
-			<select id = 'carLocation' placeholder = '지역'>
+			
+			<select id = 'carLocation'>
+				<option value = '' selected = 'selected'>지역을 선택해주세요. </option>
+				<!-- <option value = '' selected = 'selected'>지역을 선택해주세요. </option> -->
 				<!-- <%
 					var carlocation = ['강원도', '경기도', '경상도', '광주', '대구', 
 										'대전', '부산', '서울', '울산', '인천'];
@@ -52,7 +55,7 @@
 				%> -->
 			</select>
 			<select id = 'carName' placeholder = '차량 이름'>
-				
+				<option value = 'aaaa' selected = 'selected'>차량을 선택해주세요. </option>
 			</select>
 			<!-- react로 검색하는 부분 input tag로 넣기 -->
 			<div id = 'startReg'>
@@ -166,11 +169,15 @@
 				</select>
 			</div>
         </div>
-        
-        <div id = 'registerBtnDiv'>
-            <button id = 'registerBtn'>Register</button>
-        </div>
-
+		<div id = 'registerBtnDiv'>
+			<button id = 'registerBtn'>Register</button>
+		</div>
+				<section class = "wrapper style2 special">
+					<div class = "inner narrow">
+						<span>회원 가입 or 로그인을 하시기 바랍니다. </span>
+					</div>
+				</section>
+		
 		<!-- Footer -->
 		<footer id = "footer">
 			<div class = "copyright">
