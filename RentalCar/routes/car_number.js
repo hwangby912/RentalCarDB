@@ -20,12 +20,12 @@ router.post('/', (req, res, next) => {
             return console.error(err.message);
         }
         console.log(req.body.carLocation);
-        const sql = `select distinct car_name from car where location = '${req.body.carLocation}'`;
+        const sql = `select cno from car where location = '${req.body.carLocation}' and car_name = '${req.body.carName}'`;
         console.log(sql);
         con.query(sql, '', (err, rs, fields) => {
             if(err) {
                 console.error(err.message);
-                result.txt = '차량을 선택해주세요. ';
+                result.txt = '차량번호를 선택해주세요. ';
                 res.json(JSON.stringify(result));
             } else {
                 if(rs) {

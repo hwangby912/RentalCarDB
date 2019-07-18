@@ -33,7 +33,9 @@ app.use('/logout', require('./routes/logout'));
 app.use('/reservation', require('./routes/reservation'));
 app.use('/car_name', require('./routes/car_name'));
 app.use('/car_location', require('./routes/car_location'));
-// app.use('/exchange', require('./routes/exchange'));
+app.use('/car_number', require('./routes/car_number'));
+app.use('/user_info', require('./routes/user_info'));
+app.use('/user_info_check', require('./routes/user_info_check'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

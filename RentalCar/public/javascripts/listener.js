@@ -1,7 +1,4 @@
 $(document).ready(() => {
-    var carLocationCount = 0;
-    var carNameCount = 0;
-
     $('#signupBtn').click(() => {
         const userid = $('#signupID').val(); 
         const userpw = $('#signupPW').val();
@@ -68,7 +65,25 @@ $(document).ready(() => {
         });
     });
 
+    $('#checkBtn').click(() => {
+        const checkPW = $('#checkPW').val();
+
+        const sendParams = {
+            checkPW
+        }
+        $.post('/user_info_check', sendParams, (data, status) => {
+            const parsedData = JSON.parse(data);
+            console.log(parsedData.txt[0].id);
+            console.log(parsedData.txt[0].password);
+            console.log(parsedData.txt[0].name);
+            console.log(parsedData.txt[0].phone);
+            console.log(parsedData.txt[0].email);
+            
+        });
+    });
+
     $('#carLocation').mouseover(() => {
+        var carLocationCount = 0;
         $.post('/car_location', '', (data, status) => {
             const parsedData = JSON.parse(data);
             parsedData.txt.forEach((element) => {
@@ -82,6 +97,8 @@ $(document).ready(() => {
     });
 
     $('#carName').mouseover(() => {
+        var carNameCount = 0;
+
         const carLocation = $('#carLocation').val();
         
         const sendParams = {
@@ -109,9 +126,40 @@ $(document).ready(() => {
         carNameCount = 0;
     });
 
+    $('#carNum').mouseover(() => {
+        const carLocation = $('#carLocation').val();
+        const carName = $('#carName').val();
+        
+        const sendParams = {
+            carLocation,
+            carName,
+        };
+        
+        // alert(sendParams.carLocation);
+        // carNameCount = 0;
+        // $('#carName').html('');
+
+        $.post('/car_number', sendParams, (data, status) => {
+            // alert(data);
+            const parsedData = JSON.parse(data);
+            if(carNameCount == 0) {
+                $('#carNum').html('');
+            }
+            parsedData.txt.forEach((element) => {
+                if(carNameCount < parsedData.txt.length) {
+                    $('#carNum').append(`<option value = "${element.cno}">${element.cno}</option>`);
+                    carNameCount++;
+                }
+            });
+            
+        });
+        carNameCount = 0;
+    });
+
     $('#registerBtn').click(() => {
         const location = $('#carLocation').val();
         const carName = $('#carName').val();
+        const carNum = $('#carNum').val();
         const startDay = $('#startDay').val();
         const startTime = $('#startTime').val();
         const endDay = $('#endDay').val();
@@ -120,23 +168,40 @@ $(document).ready(() => {
         const sendParams = {
             location,
             carName,
+            carNum,
             startDay,
             startTime,
             endDay,
             endTime
         }
 
-        // console.log(sendParams);
-
-        $.post('/reservation', sendParams, (data, status) => {
-        //     const parsedData = JSON.parse(data);
-        //     alert('예약이 완료되었습니다. ');
-        //     $('#location').val('')
-        //     $('#carName').val('')
-        //     $('#startDay').val('')
-        //     $('#startTime').val('')
-        //     $('#endDay').val('')
-        //     $('#endTime').val('')
-        });
+        if($('#carLocation').val() === '') {
+            alert('지역을 선택해주세요.');
+        } else if($('#carName').val() === '') {
+            alert('차량 이름을 선택해주세요.');
+        } else if($('#carNum').val() === '') {
+            alert('차량 번호를 선택해주세요.');
+        } else if($('#startDay').val() === '') {
+            alert('예약 일자를 선택해주세요.');
+        } else if($('#endDay').val() === '') {
+            alert('반납 일자를 선택해주세요.');
+        } else if($('#startTime').val() === '') {
+            alert('예약 시간를 선택해주세요.');
+        } else if($('#endTime').val() === '') {
+            alert('반납 시간를 선택해주세요.');
+        } else {
+            $.post('/reservation', sendParams, (data, status) => {
+                try {
+                    $('#location').val('')
+                    $('#carName').val('')
+                    $('#startDay').val('')
+                    $('#startTime').val('')
+                    $('#endDay').val('')
+                    $('#endTime').val('')
+                } catch(err) {
+                    window.location.reload(true);
+                }
+            });
+        }
     });
 });
