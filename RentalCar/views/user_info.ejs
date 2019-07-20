@@ -10,50 +10,61 @@
 		<script src="javascripts/skel.min.js"></script>
 		<script src="javascripts/util.js"></script>
         <script src="javascripts/main.js"></script>
-        <style>
-            table {
-                border: 1px solid;
-            }
-
-            tr, td {
-                border: 1px solid;
-            }
-        </style>
     </head>
 
     <body>
-        <br>
-        
-        <input type = 'password' id = 'checkPW'>
+        <div>
+            <button id = 'logoutBtn'>LOG OUT</button>
+            <button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
+            <h2>회원 정보 수정</h2>
+        </div>
+        <div class = 'center'>
+            <input type = 'password' id = 'checkPW' placeholder = '비밀번호를 입력해주세요. '>
+        </div>
         <div id = 'checkDiv' align = center>
             <button id = 'checkBtn'>Check</button>
         </div>
-        <table>
-            <tr>
-                <td>회원가입 아이디</td>
-                <td id = 'userIDVal'><input>aaaa</td>
-                <!-- 변경 불가 ID -->
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td id = 'userPWVal'></td>
-                <!-- 변경 가능 PW -->
-            </tr>
-            <tr>
-                <td>이름</td>
-                <td id = 'userNameVal'></td>
-                <!-- 변경 가능 이름 -->
-            </tr>
-            <tr>
-                <td>Phone Number</td>
-                <td id = 'userPhoneVal'></td>
-                <!-- 변경 가능 폰번호 -->
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td id = 'userEmailVal'></td>
-                <!-- 변경 가능 Email -->
-            </tr>
-        </table>
+        <section id = "menu" class = 'wrapper special'>
+            <div>
+                <a href = '/'><button>홈으로</button></a>
+                <a href = '/signup'><button>회원 가입</button></a>
+                <a href = '/login'><button>로그인</button></a>
+                <a href = '/reservation'><button>예약</button></a>
+            </div>
+        </section>
+        <div id = 'tableDiv'>
+            <table class = 'userInfo'>
+                <tr>
+                    <td>회원가입 아이디</td>
+                    <td><div><input id = 'userIDVal' type = 'button' value = '<%= loginID %>'></div></td>
+                    <!-- 변경 불가 ID -->
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><div><input id = 'userPWVal' type = 'password' value = ''></div></td>
+                    <!-- 변경 가능 PW -->
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><div><input id = 'userNameVal' type = 'text' value = ''></div></td>
+                    <!-- 변경 가능 이름 -->
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td><div><input id = 'userPhoneVal' type = 'text' value = ''></div></td>
+                    <!-- 변경 가능 폰번호 -->
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><div><input id = 'userEmailVal' type = 'text' value = ''></div></td>
+                    <!-- 변경 가능 Email -->
+                </tr>
+            </table>
+        </div>
+        <div align = right>
+            <button id = 'deleteUser'>계정 삭제</button>
+            <button id = 'modifyInfo'>수정</button>
+        </div>
+        
     </body>
 </html>

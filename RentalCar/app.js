@@ -36,6 +36,9 @@ app.use('/car_location', require('./routes/car_location'));
 app.use('/car_number', require('./routes/car_number'));
 app.use('/user_info', require('./routes/user_info'));
 app.use('/user_info_check', require('./routes/user_info_check'));
+app.use('/modify_info', require('./routes/modify_info'));
+app.use('/delete_user', require('./routes/delete_user'));
+app.use('/price_calculate', require('./routes/price_calculate'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

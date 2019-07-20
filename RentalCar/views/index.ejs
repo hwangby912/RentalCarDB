@@ -17,37 +17,45 @@
 		<script src="javascripts/main.js"></script>
 	</head>
 	<body>
+		<div>
 		<%
 			if(loginState) {
 		%>
 				<button id = 'logoutBtn'>LOG OUT</button>
 				<a href = '/user_info'><button>My Page</button></a>
-				<span id = 'loginToolbar'><%= loginID %>님 환영합니다. </span>
+				<button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
+				<h2>Welcome To CarChain</h2>
+		<%
+			} else {
+		%>
+				<div>
+					<h2 style = 'margin-top: 2em'>Welcome To CarChain</h2>
+				</div>
 		<%
 			}
 		%>
-        <section id = "menu" class = 'wrapper special'>
+			
+		</div>
+		<section id = "menu" class = 'wrapper special'>
 			<div>
-				<a href = '/'><button>홈으로</button></a>
-				<a href = '/signup'><button>회원 가입</button></a>
-				<a href = '/login'><button>로그인</button></a>
-				<a href = '/reservation'><button>예약</button></a>
-				<!-- <a href = '/exchange'><button>원화 환전</button></a> -->
+				<a href = '/'><button>HOME</button></a>
+				<a href = '/signup'><button>SIGN UP</button></a>
+				<a href = '/login'><button>LOGIN</button></a>
+				<a href = '/reservation'><button>RESERVATION</button></a>
 			</div>
 		</section>
 
-
-		<!-- One 
-			예약 하는 부분만 넣자
-		
-		-->
-
-		
-
-		<div id = 'driverAgeDiv'>
-
-		</div>
-
+		<%
+			if(!loginState) {
+		%>
+				<section class = "wrapper style2 special">
+					<div class = "inner narrow">
+						<span>회원 가입 or 로그인을 하시기 바랍니다. </span>
+					</div>
+				</section>
+		<%
+			}
+		%>
 		<!-- Footer -->
 		<footer id = "footer">
 			<div class = "copyright">

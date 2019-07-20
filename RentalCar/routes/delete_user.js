@@ -18,14 +18,14 @@ router.post('/', (req, res, next) => {
         if(err) {
             return console.error(err.message);
         }
-        console.log('DB Connect: ', req.body.checkPW);
+        console.log('DB Connect: ', req.session.userid);
         const sql = 
-        `select * from member where id = '${req.session.userid}'`;
+        `delete from member where id = '${req.session.userid}'`;
         console.log(sql);
         con.query(sql, '', (err, rs, fields) => {
             if(err) {
                 console.error(err.message);
-                result.txt = '해당하는 userid가 없습니다. ';
+                result.txt = 'err를 출력합니다. ';
                 res.json(JSON.stringify(result));
             } else {
                 if(rs) {
@@ -45,7 +45,16 @@ router.post('/', (req, res, next) => {
             });
         });
     });
-    // res.json(JSON.stringify(result));
+
+
+
+
+
+
+
+
+
+    // console.log(req.session.userid);
 });
 
 module.exports = router;

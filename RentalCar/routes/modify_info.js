@@ -5,8 +5,8 @@ var mysql = require('mysql');
 router.post('/', (req, res, next) => {
     const result = {
         txt : ''
-    }
-
+    };
+    
     const con = mysql.createConnection({
         host : 'localhost',
         user : 'root',
@@ -18,14 +18,17 @@ router.post('/', (req, res, next) => {
         if(err) {
             return console.error(err.message);
         }
-        console.log('DB Connect: ', req.body.checkPW);
         const sql = 
-        `select * from member where id = '${req.session.userid}'`;
-        console.log(sql);
+        `update member set password = '${req.body.userPW}',
+                            name = '${req.body.userName}',
+                            phone = '${req.body.userPhone}',
+                            email = '${req.body.userEmail}'
+                        where id = '${req.session.userid}'`;
+        // console.log(sql);
         con.query(sql, '', (err, rs, fields) => {
             if(err) {
                 console.error(err.message);
-                result.txt = '해당하는 userid가 없습니다. ';
+                result.txt = 'error 출력 ';
                 res.json(JSON.stringify(result));
             } else {
                 if(rs) {
@@ -37,14 +40,9 @@ router.post('/', (req, res, next) => {
                     res.json(JSON.stringify(result));
                 }
             }
-            con.end((err) => {
-                if(err) {
-                    return console.error(err.message);
-                }
-                console.log('con close');
-            });
         });
     });
+    // result.txt = req.body;
     // res.json(JSON.stringify(result));
 });
 

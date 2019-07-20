@@ -16,22 +16,27 @@
         <%
 			if(loginState) {
 		%>
-				<button id = 'logoutBtn'>LOG OUT</button>
-				<span id = 'loginToolbar'><%= loginID %>님 환영합니다. </span>
+                <div>
+                    <button id = 'logoutBtn'>LOG OUT</button>
+                    <a href = '/user_info'><button>My Page</button></a>
+                    <button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
+                    <h2>SIGN UP PAGE</h2>
+                </div>
 		<%
 			} else {
 		%>
-		
-		<%
-			}
-		%>
+                <div>
+                    <h2 style = 'margin-top: 2em'>Welcome To CarChain</h2>
+                </div>
+        <%
+            }
+        %>
         <section id = "menu" class = 'wrapper special'>
             <div>
-                <a href = '/'><button>홈으로</button></a>
-                <a href = '/signup'><button>회원 가입</button></a>
-                <a href = '/login'><button>로그인</button></a>
-                <a href = '/reservation'><button>예약</button></a>
-                <!-- <a href = '/exchange'><button>원화 환전</button></a> -->
+                <a href = '/'><button>HOME</button></a>
+                <a href = '/signup'><button>SIGN UP</button></a>
+                <a href = '/login'><button>LOGIN</button></a>
+                <a href = '/reservation'><button>RESERVATION</button></a>
             </div>
         </section>
         <section id = "signupSection" class = "wrapper style2 special">
@@ -40,6 +45,7 @@
                     if(loginState) {
                 %>
                 <span>좌측 상단의 Log Out 버튼을 눌러주세요. </span>
+                
                 <%
                     } else {
                 %>

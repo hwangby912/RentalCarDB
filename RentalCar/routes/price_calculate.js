@@ -3,7 +3,7 @@ var router = express.Router();
 var mysql = require('mysql');
 
 router.post('/', (req, res, next) => {
-    const result = {
+    result = {
         txt : ''
     }
 
@@ -18,22 +18,23 @@ router.post('/', (req, res, next) => {
         if(err) {
             return console.error(err.message);
         }
-        console.log('DB Connect: ', req.body.checkPW);
-        const sql = 
-        `select * from member where id = '${req.session.userid}'`;
+        console.log(req.body.carLocation);
+        const sql = `select price from car where cno = '${req.body.carNum}'`;
         console.log(sql);
         con.query(sql, '', (err, rs, fields) => {
             if(err) {
                 console.error(err.message);
-                result.txt = '해당하는 userid가 없습니다. ';
+                result.txt = 'error를 출력합니다. ';
                 res.json(JSON.stringify(result));
             } else {
                 if(rs) {
-                    console.log('rs : ', rs);
+                    // console.log('rs : ', rs);
                     result.txt = rs;
                     res.json(JSON.stringify(result));
+
+                    // con.query문 넣기
                 } else {
-                    result.txt = '해당하는 userid가 없습니다. ';
+                    result.txt = '예약을 할 수 없는 차이거나 날짜를 입력해주세요. ';
                     res.json(JSON.stringify(result));
                 }
             }
@@ -45,6 +46,9 @@ router.post('/', (req, res, next) => {
             });
         });
     });
+
+
+    // console.log(req.body);
     // res.json(JSON.stringify(result));
 });
 

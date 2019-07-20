@@ -73,19 +73,64 @@ $(document).ready(() => {
         }
         $.post('/user_info_check', sendParams, (data, status) => {
             const parsedData = JSON.parse(data);
-            console.log(parsedData.txt[0].id);
-            console.log(parsedData.txt[0].password);
-            console.log(parsedData.txt[0].name);
-            console.log(parsedData.txt[0].phone);
-            console.log(parsedData.txt[0].email);
-            
+            $('#userIDVal').val(parsedData.txt[0].id);
+            $('#userPWVal').val(parsedData.txt[0].password);
+            $('#userNameVal').val(parsedData.txt[0].name);
+            $('#userPhoneVal').val(parsedData.txt[0].phone);
+            $('#userEmailVal').val(parsedData.txt[0].email);
         });
+    });
+
+    $('#modifyInfo').click(() => {
+        const userPW = $('#userPWVal').val();
+        const userName = $('#userNameVal').val();
+        const userPhone = $('#userPhoneVal').val();
+        const userEmail = $('#userEmailVal').val();
+
+        const sendParams = {
+            userPW,
+            userName,
+            userPhone,
+            userEmail,
+        };
+
+        if(userPW == '') {
+            alert('비밀번호를 입력해주시기 바랍니다. ');
+        } else if(userName == '') {
+            alert('이름을 입력해주시기 바랍니다. ');
+        } else if(userPhone == '') {
+            alert('핸드폰 번호를 입력해주시기 바랍니다. ');
+        } else if(userEmail == '') {
+            alert('Email 주소를 입력해주시기 바랍니다. ');
+        } else {
+            $.post('/modify_info', sendParams, (data, status) => {
+                $('#userPWVal').val('');
+                $('#userNameVal').val('');
+                $('#userPhoneVal').val('');
+                $('#userEmailVal').val('');
+                alert('회원 정보가 수정되었습니다. ');
+            });
+        }
+    });
+
+    $('#deleteUser').click(() => {
+        // const userID = $('#userIDVal').val();
+        // alert(userID);
+        if(confirm("계정을 정말 삭제하시겠습니까?")) {
+            $.post('/delete_user', '', (data, status) => {
+                const parsedData = JSON.parse(data);
+                alert('계정이 삭제되었습니다. ');
+            });
+        }
     });
 
     $('#carLocation').mouseover(() => {
         var carLocationCount = 0;
         $.post('/car_location', '', (data, status) => {
             const parsedData = JSON.parse(data);
+            if(carLocationCount == 0) {
+                $('#carLocation').html('');
+            }
             parsedData.txt.forEach((element) => {
                 if(carLocationCount < parsedData.txt.length) {
                     $('#carLocation').append(`<option value = "${element.location}">${element.location}</option>`);
@@ -94,6 +139,7 @@ $(document).ready(() => {
             });
             
         });
+        carLocationCount = 0;
     });
 
     $('#carName').mouseover(() => {
@@ -156,6 +202,51 @@ $(document).ready(() => {
         carNameCount = 0;
     });
 
+    $('#totalPrice').mouseover(() => {
+        let carPriceCount = 0;
+        const strDate1 = $('#startDay').val();
+        const strDate2 = $('#endDay').val();
+        const arr1 = strDate1.split('-');
+        const arr2 = strDate2.split('-');
+        const dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+        const dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+
+        const diff = dat2 - dat1;
+        const currDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+        // const currMonth = currDay * 30;// 월 만듬
+        // const currYear = currMonth * 12; // 년 만듬
+        const diffDay = parseInt(diff / currDay);
+        const carNum = $('#carNum').val();
+        let price;
+        const sendParams = {
+            diffDay,
+            carNum,
+        }
+
+        $.post('/price_calculate', sendParams, (data, status) => {
+            const parsedData = JSON.parse(data);
+            parsedData.txt.forEach((element) => {
+                if(carPriceCount < parsedData.txt.length) {
+                    price = element.price;
+                    carPriceCount++;
+                }
+            });
+            if(isNaN(parseInt(diffDay * parsedData.txt[0].price))) {
+                $('#totalPrice').html(
+                    "여기를 올리면 가격이 나옵니다."
+                );
+            } else {
+                $('#totalPrice').html(
+                    "총 가격은 " +
+                    parseInt(diffDay * parsedData.txt[0].price) +
+                    " 입니다. "
+                );
+            }
+        });
+        
+
+    });
+
     $('#registerBtn').click(() => {
         const location = $('#carLocation').val();
         const carName = $('#carName').val();
@@ -190,18 +281,20 @@ $(document).ready(() => {
         } else if($('#endTime').val() === '') {
             alert('반납 시간를 선택해주세요.');
         } else {
-            $.post('/reservation', sendParams, (data, status) => {
-                try {
-                    $('#location').val('')
-                    $('#carName').val('')
-                    $('#startDay').val('')
-                    $('#startTime').val('')
-                    $('#endDay').val('')
-                    $('#endTime').val('')
-                } catch(err) {
-                    window.location.reload(true);
-                }
-            });
+            if(confirm('예약을 하시겠습니까?')) {
+                $.post('/reservation', sendParams, (data, status) => {
+                    try {
+                        $('#location').val('')
+                        $('#carName').val('')
+                        $('#startDay').val('')
+                        $('#startTime').val('')
+                        $('#endDay').val('')
+                        $('#endTime').val('')
+                    } catch(err) {
+                        window.location.reload(true);
+                    }
+                });
+            }
         }
     });
 });

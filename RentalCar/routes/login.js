@@ -37,9 +37,9 @@ router.post('/', (req, res, next) => {
         }
         console.log('DB Connect: ', req.body.userid);
         const sql = 
-        `select * from member where id = ?`;
+        `select * from member where id = '${req.body.userid}' and password = '${req.body.userpw}'`;
         console.log(sql);
-        con.query(sql, [req.body.userid], (err, rs, fields) => {
+        con.query(sql, '', (err, rs, fields) => {
             if(err) {
                 console.error(err.message);
                 result.txt = '다시 로그인해주세요. ';
@@ -47,10 +47,10 @@ router.post('/', (req, res, next) => {
             } else {
                 if(rs[0] && rs[0].name) {
                     console.log('rs[0] : ', rs[0]);
-                    console.log('rs[0].name : ',rs[0].name);
+                    // console.log('rs[0].name : ',rs[0].name);
                     req.session.loginState = true;
                     req.session.userid = req.body.userid;
-                    req.session.name = rs[0].name;
+                    // req.session.name = rs[0].name;
                     res.redirect('/');
                 } else {
                     result.txt = '다시 로그인해주세요. ';
