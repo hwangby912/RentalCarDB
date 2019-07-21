@@ -26,6 +26,7 @@ app.use(session({
   }
 }));
 
+// routing 하는 곳
 app.use('/', require('./routes/index'));
 app.use('/signup', require('./routes/signup'));
 app.use('/login', require('./routes/login'));

@@ -21,21 +21,23 @@
 		<%
 			if(loginState) {
 		%>
-				<button id = 'logoutBtn'>LOG OUT</button>
-				<a href = '/user_info'><button>My Page</button></a>
-				<button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
-				<h2>Welcome To CarChain</h2>
+		<!-- 로그인이 된 경우 -->
+					<button id = 'logoutBtn'>LOG OUT</button>
+					<a href = '/user_info'><button>My Page</button></a>
+					<button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
+					<h2>Welcome To CarChain</h2>
 		<%
 			} else {
 		%>
+		<!-- 로그인이 안된 경우 -->
 				<div>
 					<h2 style = 'margin-top: 2em'>Welcome To CarChain</h2>
 				</div>
 		<%
 			}
 		%>
-			
 		</div>
+		<!-- menu 보여 주는 곳 -->
 		<section id = "menu" class = 'wrapper special'>
 			<div>
 				<a href = '/'><button>HOME</button></a>

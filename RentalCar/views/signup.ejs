@@ -15,7 +15,8 @@
     <body>
         <%
 			if(loginState) {
-		%>
+        %>
+        <!-- 로그인이 된 경우 -->
                 <div>
                     <button id = 'logoutBtn'>LOG OUT</button>
                     <a href = '/user_info'><button>My Page</button></a>
@@ -24,13 +25,15 @@
                 </div>
 		<%
 			} else {
-		%>
+        %>
+        <!-- 로그인이 안된 경우 -->
                 <div>
                     <h2 style = 'margin-top: 2em'>Welcome To CarChain</h2>
                 </div>
         <%
             }
         %>
+        <!-- menu 보여 주는 곳 -->
         <section id = "menu" class = 'wrapper special'>
             <div>
                 <a href = '/'><button>HOME</button></a>
@@ -39,16 +42,18 @@
                 <a href = '/reservation'><button>RESERVATION</button></a>
             </div>
         </section>
+        <!-- 회원가입을 하는 공간 -->
         <section id = "signupSection" class = "wrapper style2 special">
             <div class = "inner narrow">
                 <%
                     if(loginState) {
                 %>
+                <!-- 로그인이 되있는 경우이기에 Logout을 하라는 공간 -->
                 <span>좌측 상단의 Log Out 버튼을 눌러주세요. </span>
-                
                 <%
                     } else {
                 %>
+                <!-- 로그인이 안되있는 경우이기에 회원가입을 하라는 공간 -->
                 <header>
                     <h2>REGISTER PAGE</h2>
                 </header>
@@ -81,8 +86,6 @@
                 <%
                     }
                 %>
-                
-
             </div>
         </section>
 

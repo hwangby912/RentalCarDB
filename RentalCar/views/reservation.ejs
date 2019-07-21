@@ -16,6 +16,7 @@
         <%
 			if(loginState) {
 		%>
+		<!-- 로그인이 된 경우 -->
 				<div>
 					<button id = 'logoutBtn'>LOG OUT</button>
 					<a href = '/user_info'><button>My Page</button></a>
@@ -25,12 +26,14 @@
 		<%
 			} else {
 		%>
+		<!-- 로그인이 안된 경우 -->
 				<div>
 						<h2 style = 'margin-top: 2em'>Welcome To CarChain</h2>
 				</div>
 		<%
 			}
 		%>
+		<!-- menu 보여 주는 곳 -->
         <section id = "menu" class = 'wrapper special'>
             <div>
 				<a href = '/'><button>HOME</button></a>
@@ -38,28 +41,18 @@
 				<a href = '/login'><button>LOGIN</button></a>
 				<a href = '/reservation'><button>RESERVATION</button></a>
             </div>
-        </section>
+		</section>
+		<!-- 예약을 하는 공간 -->
 		<%
 			if(loginState) {
 		%>
+		<!-- 로그인이 된 경우 -->
 				<div id = 'registerDiv'>
 					<h3>렌터카 영업소 선택</h3>
 					픽업<br />
-					
+					<!-- 차량의 지역. 챠량 이름, 차량 번호를 선택하는 곳 -->
 					<select id = 'carLocation'>
 						<option value = '' selected = 'selected'>지역을 선택해주세요. </option>
-						<!-- <option value = '' selected = 'selected'>지역을 선택해주세요. </option>
-						<%
-							var carlocation = ['강원도', '경기도', '경상도', '광주', '대구', 
-												'대전', '부산', '서울', '울산', '인천'];
-							for(var i = 0; i < carlocation.length; i++) {
-						%>
-							<option value = '<%=carlocation[i] %>'>
-								<%=carlocation[i] %>
-							</option>
-						<%
-							}
-						%> -->
 					</select>
 					<select id = 'carName'>
 						<option value = '' selected = 'selected'>차량을 선택해주세요. </option>
@@ -67,7 +60,7 @@
 					<select id = 'carNum'>
 						<option value = '' selected = 'selected'>차량번호를 선택해주세요. </option>
 					</select>
-					<!-- react로 검색하는 부분 input tag로 넣기 -->
+					<!-- 예약 날짜와 시간을 정하는 곳 -->
 					<div id = 'startReg'>
 						<span>픽업 날짜</span> <br />
 						<input value = '시작일' type = 'date' id = 'startDay' class = 'calendar'><br />
@@ -123,6 +116,7 @@
 							<option value = '23:30'>23:30</option>
 						</select>
 					</div>
+					<!-- 마감 날짜와 시간을 정하는 곳 -->
 					<div id = 'endReg'>
 						<span>반납 날짜</span> <br />
 						<input value = '반납일' type = 'date' id = 'endDay' class = 'calendar'><br />
@@ -179,6 +173,7 @@
 						</select>
 					</div>
 				</div>
+				<!-- 예약 기간에 따라 가격을 나타내주는 곳 -->
 				<div id = 'registerBtnDiv'>
 					<button id = 'totalPrice'>여기를 올리면 가격이 나옵니다.</button><br>
 					<button id = 'registerBtn'>Register</button>
@@ -186,6 +181,7 @@
 		<%
 			} else {
 		%>
+		<!-- 로그인이 안된 경우 -->
 				<section class = "wrapper style2 special">
 					<div class = "inner narrow">
 						<span>회원 가입 or 로그인을 하시기 바랍니다. </span>

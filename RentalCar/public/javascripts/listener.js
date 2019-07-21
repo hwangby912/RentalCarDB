@@ -1,11 +1,14 @@
 $(document).ready(() => {
+    // signupBtn 객체가 눌리면 수행되는 것
     $('#signupBtn').click(() => {
+        // 해당 값들을 변수에 저장함. 
         const userid = $('#signupID').val(); 
         const userpw = $('#signupPW').val();
         const name = $('#signupName').val();
         const phone = $('#signupPhone').val();
         const email = $('#signupEmail').val();
 
+        // 하나라도 비어있다면 alert창을 띄움
         if(userid === '') {
             alert('ID를 입력해주세요.');
         } else if(userpw === '') {
@@ -24,8 +27,9 @@ $(document).ready(() => {
                 phone,
                 email
             };
+
+            // post 방식으로 sendParams를 전송
             $.post('/signup', sendParams, (data, status) => {
-                const parsedData = JSON.parse(data);
                 alert('회원 가입이 완료되었습니다. ');
                 $('#signupID').val('');
                 $('#signupPW').val('');
@@ -118,8 +122,10 @@ $(document).ready(() => {
         // alert(userID);
         if(confirm("계정을 정말 삭제하시겠습니까?")) {
             $.post('/delete_user', '', (data, status) => {
-                const parsedData = JSON.parse(data);
-                alert('계정이 삭제되었습니다. ');
+                alert('저희 서비스를 이용해주셔서 감사합니다. ');
+                $.get('/logout', '', (data, status) => {
+                    location.reload(true);
+                });
             });
         }
     });
