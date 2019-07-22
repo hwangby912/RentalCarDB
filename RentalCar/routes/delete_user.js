@@ -39,8 +39,8 @@ router.post('/', (req, res, next) => {
                 if(rs) {
                     console.log('rs : ', rs);
                     result.txt = rs;
-                    req.session.loginState = '';
-                    req.session.userid = '';
+                    // req.session.loginState = '';
+                    // req.session.userid = '';
                     res.json(JSON.stringify(result));
                 } else {
                     result.txt = '해당하는 userid가 없습니다. ';
@@ -57,15 +57,6 @@ router.post('/', (req, res, next) => {
         });
     });
 
-
-
-
-
-
-
-
-
-    // console.log(req.session.userid);
 });
 
 module.exports = router;
