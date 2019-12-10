@@ -1,15 +1,15 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get("/", function(req, res, next) {
   console.log(req.session.loginState);
   console.log(req.session.userid);
-  // signup.ejs를 띄우는데 
+  // signup.ejs를 띄우는데
   // loginState와 loginID 값을 전달시킴
-  res.render('index', {
+  res.render("index", {
     loginState: req.session.loginState,
-    loginID: req.session.userid,
+    loginID: req.session.userid
   });
 });
 

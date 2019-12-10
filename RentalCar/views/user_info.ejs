@@ -1,75 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Typify by TEMPLATED</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="stylesheets/main.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src = 'javascripts/listener.js'></script>
-		<script src="javascripts/skel.min.js"></script>
-		<script src="javascripts/util.js"></script>
-        <script src="javascripts/main.js"></script>
-    </head>
+  <head>
+    <title>Typify by TEMPLATED</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="stylesheets/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="javascripts/listener.js"></script>
+    <script src="javascripts/skel.min.js"></script>
+    <script src="javascripts/util.js"></script>
+    <script src="javascripts/main.js"></script>
+  </head>
 
-    <body>
-        <div>
-            <button id = 'logoutBtn'>LOG OUT</button>
-            <button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
-            <h2>회원 정보 수정</h2>
-        </div>
-        <!-- 사용자의 비밀번호를 입력하는 공간 -->
-        <div class = 'center'>
-            <input type = 'password' id = 'checkPW' placeholder = '비밀번호를 입력해주세요. '>
-        </div>
-        <!-- 사용자의 비밀번호가 맞게 입력되었는지 비교하는 버튼 -->
-        <div id = 'checkDiv' align = center>
-            <button id = 'checkBtn'>Check</button>
-        </div>
-        <!-- menu 보여 주는 곳 -->
-        <section id = "menu" class = 'wrapper special'>
+  <body>
+    <div>
+      <button id="logoutBtn">LOG OUT</button>
+      <button id="loginToolbar"><%= loginID %>님 환영합니다.</button>
+      <h2>회원 정보 수정</h2>
+    </div>
+    <!-- 사용자의 비밀번호를 입력하는 공간 -->
+    <div class="center">
+      <input
+        type="password"
+        id="checkPW"
+        placeholder="비밀번호를 입력해주세요. "
+      />
+    </div>
+    <!-- 사용자의 비밀번호가 맞게 입력되었는지 비교하는 버튼 -->
+    <div id="checkDiv" align="center">
+      <button id="checkBtn">Check</button>
+    </div>
+    <!-- menu 보여 주는 곳 -->
+    <section id="menu" class="wrapper special">
+      <div>
+        <a href="/"><button>홈으로</button></a>
+        <a href="/signup"><button>회원 가입</button></a>
+        <a href="/login"><button>로그인</button></a>
+        <a href="/reservation"><button>예약</button></a>
+      </div>
+    </section>
+    <!-- 사용자의 개인정보를 나타내는 공간 -->
+    <div id="tableDiv">
+      <table class="userInfo">
+        <tr>
+          <td>회원가입 아이디</td>
+          <td>
             <div>
-                <a href = '/'><button>홈으로</button></a>
-                <a href = '/signup'><button>회원 가입</button></a>
-                <a href = '/login'><button>로그인</button></a>
-                <a href = '/reservation'><button>예약</button></a>
+              <input id="userIDVal" type="button" value="<%= loginID %>" />
             </div>
-        </section>
-        <!-- 사용자의 개인정보를 나타내는 공간 -->
-        <div id = 'tableDiv'>
-            <table class = 'userInfo'>
-                <tr>
-                    <td>회원가입 아이디</td>
-                    <td><div><input id = 'userIDVal' type = 'button' value = '<%= loginID %>'></div></td>
-                    <!-- 변경 불가 ID -->
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><div><input id = 'userPWVal' type = 'password' value = ''></div></td>
-                    <!-- 변경 가능 PW -->
-                </tr>
-                <tr>
-                    <td>이름</td>
-                    <td><div><input id = 'userNameVal' type = 'text' value = ''></div></td>
-                    <!-- 변경 가능 이름 -->
-                </tr>
-                <tr>
-                    <td>Phone Number</td>
-                    <td><div><input id = 'userPhoneVal' type = 'text' value = ''></div></td>
-                    <!-- 변경 가능 폰번호 -->
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><div><input id = 'userEmailVal' type = 'text' value = ''></div></td>
-                    <!-- 변경 가능 Email -->
-                </tr>
-            </table>
-        </div>
-        <!-- 사용자의 정보를 삭제하거나 수정하는 공간 -->
-        <div align = right>
-            <button id = 'deleteUser'>계정 삭제</button>
-            <button id = 'modifyInfo'>수정</button>
-        </div>
-        
-    </body>
+          </td>
+          <!-- 변경 불가 ID -->
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td>
+            <div><input id="userPWVal" type="password" value="" /></div>
+          </td>
+          <!-- 변경 가능 PW -->
+        </tr>
+        <tr>
+          <td>이름</td>
+          <td>
+            <div><input id="userNameVal" type="text" value="" /></div>
+          </td>
+          <!-- 변경 가능 이름 -->
+        </tr>
+        <tr>
+          <td>Phone Number</td>
+          <td>
+            <div><input id="userPhoneVal" type="text" value="" /></div>
+          </td>
+          <!-- 변경 가능 폰번호 -->
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <div><input id="userEmailVal" type="text" value="" /></div>
+          </td>
+          <!-- 변경 가능 Email -->
+        </tr>
+      </table>
+    </div>
+    <!-- 사용자의 정보를 삭제하거나 수정하는 공간 -->
+    <div align="right">
+      <button id="deleteUser">계정 삭제</button>
+      <button id="modifyInfo">수정</button>
+    </div>
+  </body>
 </html>

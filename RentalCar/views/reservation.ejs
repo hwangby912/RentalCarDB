@@ -1,201 +1,194 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Typify by TEMPLATED</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="stylesheets/main.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src = 'javascripts/listener.js'></script>
-		<script src="javascripts/skel.min.js"></script>
-		<script src="javascripts/util.js"></script>
-		<script src="javascripts/main.js"></script>
-    </head>
+  <head>
+    <title>Typify by TEMPLATED</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="stylesheets/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="javascripts/listener.js"></script>
+    <script src="javascripts/skel.min.js"></script>
+    <script src="javascripts/util.js"></script>
+    <script src="javascripts/main.js"></script>
+  </head>
 
-    <body>
-        <%
-			if(loginState) {
-		%>
-		<!-- 로그인이 된 경우 -->
-				<div>
-					<button id = 'logoutBtn'>LOG OUT</button>
-					<a href = '/user_info'><button>My Page</button></a>
-					<button id = 'loginToolbar'><%= loginID %>님 환영합니다. </button>
-					<h2>RESERVATION PAGE</h2>
-        		</div>
-		<%
-			} else {
-		%>
-		<!-- 로그인이 안된 경우 -->
-				<div>
-						<h2 style = 'margin-top: 2em'>Welcome To CarChain</h2>
-				</div>
-		<%
-			}
-		%>
-		<!-- menu 보여 주는 곳 -->
-        <section id = "menu" class = 'wrapper special'>
-            <div>
-				<a href = '/'><button>HOME</button></a>
-				<a href = '/signup'><button>SIGN UP</button></a>
-				<a href = '/login'><button>LOGIN</button></a>
-				<a href = '/reservation'><button>RESERVATION</button></a>
-            </div>
-		</section>
-		<!-- 예약을 하는 공간 -->
-		<%
-			if(loginState) {
-		%>
-		<!-- 로그인이 된 경우 -->
-				<div id = 'registerDiv'>
-					<h3>렌터카 영업소 선택</h3>
-					픽업<br />
-					<!-- 차량의 지역. 챠량 이름, 차량 번호를 선택하는 곳 -->
-					<select id = 'carLocation'>
-						<option value = '' selected = 'selected'>지역을 선택해주세요. </option>
-					</select>
-					<select id = 'carName'>
-						<option value = '' selected = 'selected'>차량을 선택해주세요. </option>
-					</select>
-					<select id = 'carNum'>
-						<option value = '' selected = 'selected'>차량번호를 선택해주세요. </option>
-					</select>
-					<!-- 예약 날짜와 시간을 정하는 곳 -->
-					<div id = 'startReg'>
-						<span>픽업 날짜</span> <br />
-						<input value = '시작일' type = 'date' id = 'startDay' class = 'calendar'><br />
-						<select id = 'startTime'>
-							<option value = '' selected = 'selected'>시간을 정해주세요. </option>
-							<option value = '00:00'>00:00</option>
-							<option value = '00:30'>00:30</option>
-							<option value = '01:00'>01:00</option>
-							<option value = '01:30'>01:30</option>
-							<option value = '02:00'>02:00</option>
-							<option value = '02:30'>02:30</option>
-							<option value = '03:00'>03:00</option>
-							<option value = '03:30'>03:30</option>
-							<option value = '04:00'>04:00</option>
-							<option value = '04:30'>04:30</option>
-							<option value = '05:00'>05:00</option>
-							<option value = '05:30'>05:30</option>
-							<option value = '06:00'>06:00</option>
-							<option value = '06:30'>06:30</option>
-							<option value = '07:00'>07:00</option>
-							<option value = '07:30'>07:30</option>
-							<option value = '08:00'>08:00</option>
-							<option value = '08:30'>08:30</option>
-							<option value = '09:00'>09:00</option>
-							<option value = '09:30'>09:30</option>
-							<option value = '10:00'>10:00</option>
-							<option value = '10:30'>10:30</option>
-							<option value = '11:00'>11:00</option>
-							<option value = '11:30'>11:30</option>
-							<option value = '12:00'>12:00</option>
-							<option value = '12:30'>12:30</option>
-							<option value = '13:00'>13:00</option>
-							<option value = '13:00'>13:30</option>
-							<option value = '14:00'>14:00</option>
-							<option value = '14:30'>14:30</option>
-							<option value = '15:00'>15:00</option>
-							<option value = '15:30'>15:30</option>
-							<option value = '16:00'>16:00</option>
-							<option value = '16:30'>16:30</option>
-							<option value = '17:00'>17:00</option>
-							<option value = '17:30'>17:30</option>
-							<option value = '18:00'>18:00</option>
-							<option value = '18:30'>18:30</option>
-							<option value = '19:00'>19:00</option>
-							<option value = '19:30'>19:30</option>
-							<option value = '20:00'>20:00</option>
-							<option value = '20:30'>20:30</option>
-							<option value = '21:00'>21:00</option>
-							<option value = '21:30'>21:30</option>
-							<option value = '22:00'>22:00</option>
-							<option value = '22:30'>22:30</option>
-							<option value = '23:00'>23:00</option>
-							<option value = '23:30'>23:30</option>
-						</select>
-					</div>
-					<!-- 마감 날짜와 시간을 정하는 곳 -->
-					<div id = 'endReg'>
-						<span>반납 날짜</span> <br />
-						<input value = '반납일' type = 'date' id = 'endDay' class = 'calendar'><br />
-						<select id = 'endTime'>
-							<option value = '' selected = 'selected'>시간을 정해주세요. </option>
-							<option value = '00:00'>00:00</option>
-							<option value = '00:30'>00:30</option>
-							<option value = '01:00'>01:00</option>
-							<option value = '01:30'>01:30</option>
-							<option value = '02:00'>02:00</option>
-							<option value = '02:30'>02:30</option>
-							<option value = '03:00'>03:00</option>
-							<option value = '03:30'>03:30</option>
-							<option value = '04:00'>04:00</option>
-							<option value = '04:30'>04:30</option>
-							<option value = '05:00'>05:00</option>
-							<option value = '05:30'>05:30</option>
-							<option value = '06:00'>06:00</option>
-							<option value = '06:30'>06:30</option>
-							<option value = '07:00'>07:00</option>					
-							<option value = '07:30'>07:30</option>
-							<option value = '08:00'>08:00</option>
-							<option value = '08:30'>08:30</option>
-							<option value = '09:00'>09:00</option>
-							<option value = '09:30'>09:30</option>
-							<option value = '10:00'>10:00</option>
-							<option value = '10:30'>10:30</option>
-							<option value = '11:00'>11:00</option>
-							<option value = '11:30'>11:30</option>
-							<option value = '12:00'>12:00</option>
-							<option value = '12:30'>12:30</option>
-							<option value = '13:00'>13:00</option>
-							<option value = '13:00'>13:30</option>
-							<option value = '14:00'>14:00</option>
-							<option value = '14:30'>14:30</option>
-							<option value = '15:00'>15:00</option>
-							<option value = '15:30'>15:30</option>
-							<option value = '16:00'>16:00</option>
-							<option value = '16:30'>16:30</option>
-							<option value = '17:00'>17:00</option>
-							<option value = '17:30'>17:30</option>
-							<option value = '18:00'>18:00</option>
-							<option value = '18:30'>18:30</option>
-							<option value = '19:00'>19:00</option>
-							<option value = '19:30'>19:30</option>
-							<option value = '20:00'>20:00</option>					
-							<option value = '20:30'>20:30</option>
-							<option value = '21:00'>21:00</option>
-							<option value = '21:30'>21:30</option>
-							<option value = '22:00'>22:00</option>
-							<option value = '22:30'>22:30</option>
-							<option value = '23:00'>23:00</option>					
-							<option value = '23:30'>23:30</option>
-						</select>
-					</div>
-				</div>
-				<!-- 예약 기간에 따라 가격을 나타내주는 곳 -->
-				<div id = 'registerBtnDiv'>
-					<button id = 'totalPrice'>여기를 올리면 가격이 나옵니다.</button><br>
-					<button id = 'registerBtn'>Register</button>
-				</div>
-		<%
-			} else {
-		%>
-		<!-- 로그인이 안된 경우 -->
-				<section class = "wrapper style2 special">
-					<div class = "inner narrow">
-						<span>회원 가입 or 로그인을 하시기 바랍니다. </span>
-					</div>
-				</section>
-		<%
-			}
-		%>
-        
-		<!-- Footer -->
-		<footer id = "footer">
-			<div class = "copyright">
-			&copy; Untitled. Design: <a href = "http://templated.co/">TEMPLATED</a>.
-			</div>
-		</footer>
-    </body>
+  <body>
+    <% if(loginState) { %>
+    <!-- 로그인이 된 경우 -->
+    <div>
+      <button id="logoutBtn">LOG OUT</button>
+      <a href="/user_info"><button>My Page</button></a>
+      <button id="loginToolbar"><%= loginID %>님 환영합니다.</button>
+      <h2>RESERVATION PAGE</h2>
+    </div>
+    <% } else { %>
+    <!-- 로그인이 안된 경우 -->
+    <div>
+      <h2 style="margin-top: 2em">Welcome To CarChain</h2>
+    </div>
+    <% } %>
+    <!-- menu 보여 주는 곳 -->
+    <section id="menu" class="wrapper special">
+      <div>
+        <a href="/"><button>HOME</button></a>
+        <a href="/signup"><button>SIGN UP</button></a>
+        <a href="/login"><button>LOGIN</button></a>
+        <a href="/reservation"><button>RESERVATION</button></a>
+      </div>
+    </section>
+    <!-- 예약을 하는 공간 -->
+    <% if(loginState) { %>
+    <!-- 로그인이 된 경우 -->
+    <div id="registerDiv">
+      <h3>렌터카 영업소 선택</h3>
+      픽업<br />
+      <!-- 차량의 지역. 챠량 이름, 차량 번호를 선택하는 곳 -->
+      <select id="carLocation">
+        <option value="" selected="selected">지역을 선택해주세요. </option>
+      </select>
+      <select id="carName">
+        <option value="" selected="selected">차량을 선택해주세요. </option>
+      </select>
+      <select id="carNum">
+        <option value="" selected="selected">차량번호를 선택해주세요. </option>
+      </select>
+      <!-- 예약 날짜와 시간을 정하는 곳 -->
+      <div id="startReg">
+        <span>픽업 날짜</span> <br />
+        <input
+          value="시작일"
+          type="date"
+          id="startDay"
+          class="calendar"
+        /><br />
+        <select id="startTime">
+          <option value="" selected="selected">시간을 정해주세요. </option>
+          <option value="00:00">00:00</option>
+          <option value="00:30">00:30</option>
+          <option value="01:00">01:00</option>
+          <option value="01:30">01:30</option>
+          <option value="02:00">02:00</option>
+          <option value="02:30">02:30</option>
+          <option value="03:00">03:00</option>
+          <option value="03:30">03:30</option>
+          <option value="04:00">04:00</option>
+          <option value="04:30">04:30</option>
+          <option value="05:00">05:00</option>
+          <option value="05:30">05:30</option>
+          <option value="06:00">06:00</option>
+          <option value="06:30">06:30</option>
+          <option value="07:00">07:00</option>
+          <option value="07:30">07:30</option>
+          <option value="08:00">08:00</option>
+          <option value="08:30">08:30</option>
+          <option value="09:00">09:00</option>
+          <option value="09:30">09:30</option>
+          <option value="10:00">10:00</option>
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30</option>
+          <option value="12:00">12:00</option>
+          <option value="12:30">12:30</option>
+          <option value="13:00">13:00</option>
+          <option value="13:00">13:30</option>
+          <option value="14:00">14:00</option>
+          <option value="14:30">14:30</option>
+          <option value="15:00">15:00</option>
+          <option value="15:30">15:30</option>
+          <option value="16:00">16:00</option>
+          <option value="16:30">16:30</option>
+          <option value="17:00">17:00</option>
+          <option value="17:30">17:30</option>
+          <option value="18:00">18:00</option>
+          <option value="18:30">18:30</option>
+          <option value="19:00">19:00</option>
+          <option value="19:30">19:30</option>
+          <option value="20:00">20:00</option>
+          <option value="20:30">20:30</option>
+          <option value="21:00">21:00</option>
+          <option value="21:30">21:30</option>
+          <option value="22:00">22:00</option>
+          <option value="22:30">22:30</option>
+          <option value="23:00">23:00</option>
+          <option value="23:30">23:30</option>
+        </select>
+      </div>
+      <!-- 마감 날짜와 시간을 정하는 곳 -->
+      <div id="endReg">
+        <span>반납 날짜</span> <br />
+        <input value="반납일" type="date" id="endDay" class="calendar" /><br />
+        <select id="endTime">
+          <option value="" selected="selected">시간을 정해주세요. </option>
+          <option value="00:00">00:00</option>
+          <option value="00:30">00:30</option>
+          <option value="01:00">01:00</option>
+          <option value="01:30">01:30</option>
+          <option value="02:00">02:00</option>
+          <option value="02:30">02:30</option>
+          <option value="03:00">03:00</option>
+          <option value="03:30">03:30</option>
+          <option value="04:00">04:00</option>
+          <option value="04:30">04:30</option>
+          <option value="05:00">05:00</option>
+          <option value="05:30">05:30</option>
+          <option value="06:00">06:00</option>
+          <option value="06:30">06:30</option>
+          <option value="07:00">07:00</option>
+          <option value="07:30">07:30</option>
+          <option value="08:00">08:00</option>
+          <option value="08:30">08:30</option>
+          <option value="09:00">09:00</option>
+          <option value="09:30">09:30</option>
+          <option value="10:00">10:00</option>
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30</option>
+          <option value="12:00">12:00</option>
+          <option value="12:30">12:30</option>
+          <option value="13:00">13:00</option>
+          <option value="13:00">13:30</option>
+          <option value="14:00">14:00</option>
+          <option value="14:30">14:30</option>
+          <option value="15:00">15:00</option>
+          <option value="15:30">15:30</option>
+          <option value="16:00">16:00</option>
+          <option value="16:30">16:30</option>
+          <option value="17:00">17:00</option>
+          <option value="17:30">17:30</option>
+          <option value="18:00">18:00</option>
+          <option value="18:30">18:30</option>
+          <option value="19:00">19:00</option>
+          <option value="19:30">19:30</option>
+          <option value="20:00">20:00</option>
+          <option value="20:30">20:30</option>
+          <option value="21:00">21:00</option>
+          <option value="21:30">21:30</option>
+          <option value="22:00">22:00</option>
+          <option value="22:30">22:30</option>
+          <option value="23:00">23:00</option>
+          <option value="23:30">23:30</option>
+        </select>
+      </div>
+    </div>
+    <!-- 예약 기간에 따라 가격을 나타내주는 곳 -->
+    <div id="registerBtnDiv">
+      <button id="totalPrice">여기를 올리면 가격이 나옵니다.</button><br />
+      <button id="registerBtn">Register</button>
+    </div>
+    <% } else { %>
+    <!-- 로그인이 안된 경우 -->
+    <section class="wrapper style2 special">
+      <div class="inner narrow">
+        <span>회원 가입 or 로그인을 하시기 바랍니다. </span>
+      </div>
+    </section>
+    <% } %>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="copyright">
+        &copy; Untitled. Design: <a href="http://templated.co/">TEMPLATED</a>.
+      </div>
+    </footer>
+  </body>
 </html>
